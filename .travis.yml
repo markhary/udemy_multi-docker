@@ -10,10 +10,10 @@ script:
   - docker run -e CI=true markhary/udemy-react-test npm test
 
 after_success:
-  - docker build -t markhary/udemy-multi-client -f ./client ./client
-  - docker build -t markhary/udemy-multi-nginx -f ./nginx ./nginx
-  - docker build -t markhary/udemy-multi-server -f ./server ./server
-  - docker build -t markhary/udemy-multi-worker -f ./worker ./worker
+  - docker build -t markhary/udemy-multi-client ./client
+  - docker build -t markhary/udemy-multi-nginx ./nginx
+  - docker build -t markhary/udemy-multi-server ./server
+  - docker build -t markhary/udemy-multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push to docker hub
