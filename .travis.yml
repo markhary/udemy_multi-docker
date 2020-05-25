@@ -21,3 +21,16 @@ after_success:
   - docker push markhary/udemy-multi-nginx
   - docker push markhary/udemy-multi-server
   - docker push markhary/udemy-multi-worker
+
+deploy:
+  # edge: true
+  provider: elasticbeanstalk
+  region: us-east-1
+  app: udemy-multi-docker
+  env: UdemyMultiDocker-env
+  bucket_name: elasticbeanstalk-us-east-1-867629861925
+  bucket_path: udemy-multi-docker
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
